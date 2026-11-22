@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 90">
+
+    <defs>
+        <!-- Signature Brand Gradient -->
+        <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2DD4BF" />
+            <stop offset="50%" stop-color="#3B82F6" />
+            <stop offset="100%" stop-color="#D946EF" />
+        </linearGradient>
+
+        <!-- Soft Neon Glow -->
+        <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4.5" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+
+        <!-- Text gradient: purple → white fade -->
+        <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#C084FC" />
+            <stop offset="40%" stop-color="#A78BFA" />
+            <stop offset="100%" stop-color="#E2E8F0" />
+        </linearGradient>
+
+        <!-- Clip mask to hide 'otevibes' when it slides behind the 'N' -->
+        <clipPath id="textMask">
+            <rect x="29" y="-60" width="300" height="120" />
+        </clipPath>
+    </defs>
+
+    <style>
+        .font-style {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-size: 39px;
+            font-weight: 800;
+            letter-spacing: -0.75px;
+            user-select: none;
+        }
+
+        /* Wrapper moves the whole group to keep it perfectly centered */
+        .shift-group {
+            animation: slideCenter 6s cubic-bezier(0.77, 0, 0.17, 1) infinite;
+        }
+
+        /* Text shoots out from behind the mask */
+        .reveal-text {
+            animation: slideOut 6s cubic-bezier(0.77, 0, 0.17, 1) infinite;
+        }
+
+        /* Center alignments scaled 1.5x */
+        @keyframes slideCenter {
+            0%, 15% { transform: translate(207px, 60px); }
+            35%, 80% { transform: translate(128px, 60px); }
+            100% { transform: translate(207px, 60px); }
+        }
+
+        @keyframes slideOut {
+            0%, 15% { transform: translateX(-150px); opacity: 0; }
+            35%, 80% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(-150px); opacity: 0; }
+        }
+
+        /* Equalizer active waveform animation */
+        .eq {
+            transform-origin: bottom;
+            transform-box: fill-box;
+            animation: eqPulse 0.5s ease-in-out infinite alternate;
+        }
+        .eq-1 { animation-delay: 0.0s; animation-duration: 0.6s; }
+        .eq-2 { animation-delay: 0.2s; animation-duration: 0.4s; }
+        .eq-3 { animation-delay: 0.4s; animation-duration: 0.7s; }
+
+        @keyframes eqPulse {
+            0% { transform: scaleY(0.4); }
+            100% { transform: scaleY(1.1); }
+        }
+    </style>
+
+    <!-- Main animated assembly -->
+    <g class="shift-group">
+
+        <!-- 1. The masked 'otevibes' (Drawn FIRST so it slides BEHIND the N) -->
+        <g clip-path="url(#textMask)">
+            <text x="29" y="0" class="font-style reveal-text" fill="url(#textGrad)">otevibes</text>
+        </g>
+
+        <!-- 2. The 'N' Logo Mark -->
+        <!-- Glowing background copy -->
+        <text x="0" y="0" class="font-style" fill="url(#brandGrad)" filter="url(#neonGlow)" opacity="0.6">N</text>
+        <!-- Sharp foreground copy -->
+        <text x="0" y="0" class="font-style" fill="url(#brandGrad)">N</text>
+
+        <!-- 3. Audio Wave Icon (Attached smoothly to the left of the 'N') -->
+        <g transform="translate(-24, -33)" fill="url(#brandGrad)">
+            <rect x="0" y="12" width="4.5" height="18" rx="2.25" class="eq eq-1" />
+            <rect x="7.5" y="0" width="4.5" height="30" rx="2.25" class="eq eq-2" />
+            <rect x="15" y="6" width="4.5" height="24" rx="2.25" class="eq eq-3" />
+        </g>
+
+    </g>
+</svg>

@@ -1,0 +1,207 @@
+.all-tools-page {
+  min-height: calc(100svh - var(--header-height));
+  padding-bottom: var(--space-6);
+}
+
+.all-tools-page__header {
+  padding-block: clamp(48px, 7vw, 84px) var(--space-4);
+}
+
+.all-tools-page__header > div {
+  display: grid;
+  max-width: 760px;
+  gap: var(--space-2);
+}
+
+.all-tools-page__header h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.all-tools-page__header p:last-child {
+  max-width: 60ch;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.all-tools-page__content {
+  padding-block: 0 var(--space-5);
+}
+
+.all-tools-controls {
+  display: grid;
+  grid-template-columns: minmax(220px, 2fr) repeat(2, minmax(150px, 1fr));
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  padding: var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg-soft);
+}
+
+.all-tools-control {
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  color: #111111;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.all-tools-control input,
+.all-tools-control select {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: #111111;
+  outline: none;
+}
+
+.all-tools-control input {
+  padding-inline: 42px 12px;
+}
+
+.all-tools-control select {
+  padding-inline: 12px;
+  color: #111111;
+}
+
+.all-tools-control select option,
+.all-tools-control select optgroup {
+  color: #111111;
+  background: #ffffff;
+}
+
+.all-tools-control--search {
+  position: relative;
+  align-items: center;
+  grid-template-columns: 18px minmax(0, 1fr);
+  min-height: 54px;
+  padding: 5px 48px 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+.all-tools-control--search svg {
+  position: absolute;
+  left: 14px;
+  z-index: 1;
+  color: var(--text-muted);
+}
+
+.all-tools-control--search input {
+  grid-column: 2;
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #111111;
+  font-size: 0.875rem;
+  line-height: 44px;
+  padding-inline: 8px 4px;
+  -webkit-text-fill-color: #111111;
+}
+
+.all-tools-control--search input::placeholder {
+  color: #111111;
+  opacity: 1;
+  -webkit-text-fill-color: #111111;
+}
+
+.all-tools-control--clear {
+  position: absolute;
+  right: 9px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--primary-wash);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.all-tools-control input:focus,
+.all-tools-control select:focus {
+  border-color: var(--primary-line);
+  box-shadow: 0 0 0 3px var(--primary-wash);
+}
+
+.all-tools-results {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  margin-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.all-tools-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.all-tools-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.all-tools-pagination button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+  padding-inline: 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.all-tools-pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.all-tools-pagination span {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .all-tools-controls {
+    grid-template-columns: minmax(0, 1fr) repeat(2, minmax(140px, 0.7fr));
+  }
+
+  .all-tools-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .all-tools-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .all-tools-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .all-tools-pagination {
+    gap: var(--space-2);
+  }
+
+  .all-tools-pagination span {
+    min-width: 0;
+  }
+}

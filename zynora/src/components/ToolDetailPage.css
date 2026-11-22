@@ -1,0 +1,306 @@
+.tool-detail {
+  padding-block: clamp(32px, 5vw, 64px) clamp(56px, 8vw, 96px);
+}
+
+.tool-detail__breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  color: var(--color-secondary);
+  font-size: 0.75rem;
+}
+
+.tool-detail__breadcrumb a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.tool-detail__breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.tool-detail__hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding: clamp(20px, 4vw, 40px);
+  border-color: var(--border);
+}
+
+.tool-detail__identity {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+.tool-detail__logo {
+  display: grid;
+  width: 76px;
+  height: 76px;
+  flex: 0 0 76px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-soft);
+  color: var(--color-secondary);
+  font-size: 0.5625rem;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.tool-detail__logo img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.tool-detail__intro {
+  min-width: 0;
+}
+
+.tool-detail__intro .eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+.tool-detail__intro h1 {
+  margin-bottom: var(--space-2);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  letter-spacing: -0.075em;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+.tool-detail__short-description {
+  max-width: 65ch;
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+  line-height: 1.75;
+}
+
+.tool-detail__actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.tool-detail__pricing {
+  padding: 5px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-secondary);
+  font-size: 0.6875rem;
+}
+
+.tool-detail__pricing--freemium,
+.tool-detail__pricing--free {
+  border-color: var(--primary-line);
+  color: var(--color-accent);
+}
+
+.tool-detail__pricing--premium,
+.tool-detail__pricing--unverified {
+  color: var(--color-secondary);
+}
+
+.tool-detail__pricing--free-trial,
+.tool-detail__pricing--paid {
+  border-color: var(--primary-line);
+  color: var(--color-accent);
+}
+
+.tool-detail__site-unavailable {
+  color: var(--color-secondary);
+  font-size: 0.75rem;
+}
+
+.tool-detail__content {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.tool-detail__panel h2,
+.tool-detail__section-heading h2 {
+  margin-bottom: var(--space-3);
+  font-size: 1.125rem;
+  letter-spacing: -0.04em;
+}
+
+.tool-detail__panel > p,
+.tool-detail__panel li {
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+.tool-detail__panel ul {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tool-detail__panel li::before {
+  margin-right: 0.75rem;
+  color: var(--color-accent);
+  content: "✦";
+}
+
+.tool-detail__panel strong {
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.tool-detail__note {
+  margin-top: var(--space-3);
+  color: var(--color-secondary);
+  font-size: 0.75rem;
+}
+
+.tool-detail__verified {
+  margin-top: var(--space-3);
+  font-size: 0.6875rem !important;
+}
+
+.tool-detail__columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.tool-detail__section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.tool-detail__section-heading .eyebrow {
+  margin-bottom: var(--space-2);
+  font-size: 0.6875rem;
+}
+
+.tool-detail__section-heading h2 {
+  margin-bottom: 0;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.tool-detail__section-heading > span {
+  color: var(--color-secondary);
+  font-size: 0.6875rem;
+}
+
+.tool-detail__related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: var(--space-3);
+}
+
+.tool-detail__related-card {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-2);
+  color: var(--color-white);
+  text-decoration: none;
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.tool-detail__related-card:hover {
+  transform: translateY(-1px);
+  border-color: var(--primary-line);
+}
+
+.tool-detail__related-card > span:first-child {
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.tool-detail__related-card > span:nth-child(2) {
+  color: var(--color-accent);
+}
+
+.tool-detail__related-card small {
+  grid-column: 1 / -1;
+  color: var(--color-secondary);
+  font-size: 0.6875rem;
+  line-height: 1.6;
+}
+
+.tool-not-found {
+  display: grid;
+  min-height: min(65vh, 620px);
+  align-content: center;
+  justify-items: start;
+  gap: var(--space-4);
+  padding-block: var(--space-6);
+}
+
+.tool-not-found h1 {
+  max-width: 18ch;
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  letter-spacing: -0.07em;
+  line-height: 1.15;
+}
+
+.tool-not-found > p:not(.eyebrow) {
+  max-width: 60ch;
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+}
+
+.tool-not-found .button {
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 700px) {
+  .tool-detail__hero {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .tool-detail__actions {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tool-detail__columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .tool-detail__identity {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .tool-detail__actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .tool-detail__related-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-detail__related-card:hover {
+    transform: none;
+  }
+}

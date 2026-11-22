@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">CoinScreener</title>
+  <path d="M41.66 13.34A22 22 0 1 0 41.66 50.66" fill="none" stroke="#c8ff3d" stroke-width="8" stroke-linecap="round"/>
+  <path d="M18.5 38.5 26.5 30l7 6 12-12.5" fill="none" stroke="#5ce1c4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="45.5" cy="23.5" r="4.5" fill="#c8ff3d"/>
+</svg>

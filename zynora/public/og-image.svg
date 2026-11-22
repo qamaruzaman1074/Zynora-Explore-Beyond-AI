@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <radialGradient id="aurora" cx="0" cy="0" r="1" gradientTransform="matrix(690 510 -490 660 930 30)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8382E" stop-opacity=".12"/>
+      <stop offset=".32" stop-color="#FF8A7A" stop-opacity=".24"/>
+      <stop offset=".68" stop-color="#FFD9D2" stop-opacity=".68"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="edge" x1="120" x2="1050" y1="110" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EF4136"/>
+      <stop offset="1" stop-color="#FFD9D2"/>
+    </linearGradient>
+  </defs>
+  <path fill="#fff" d="M0 0h1200v630H0z"/>
+  <path fill="url(#aurora)" d="M0 0h1200v630H0z"/>
+  <rect x="76.5" y="76.5" width="1047" height="477" rx="32" stroke="#0B0B14" stroke-opacity=".08"/>
+  <path d="M120 159h72" stroke="url(#edge)" stroke-linecap="round" stroke-width="5"/>
+  <text x="120" y="318" fill="#0B0B14" font-family="Arial, sans-serif" font-size="108" font-weight="700" letter-spacing="10">ZYNORA</text>
+  <text x="124" y="382" fill="#5F6166" font-family="Arial, sans-serif" font-size="28" letter-spacing="2">EXPLORE BEYOND AI.</text>
+  <text x="124" y="492" fill="#D6342A" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="4">AI TOOLS DISCOVERY</text>
+</svg>

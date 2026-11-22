@@ -1,0 +1,37 @@
+[
+  {
+    "slug": "avtrs",
+    "candidateAsset": "avtrs.jpg",
+    "reason": "Contact sheet shows a photo/cover-style image, and its source is named og-cover.jpg rather than an isolated logo."
+  },
+  {
+    "slug": "bookwiz",
+    "candidateAsset": "bookwiz.png",
+    "reason": "Contact sheet shows a UI/promotional image, and its source is named og-image.png rather than an isolated logo."
+  },
+  {
+    "slug": "article-factory",
+    "candidateAsset": "article-factory.svg",
+    "reason": "Candidate favicon came from article-factory.ai, which differs from this catalog entry's official website article-factory.com; possible similarly named product."
+  },
+  {
+    "slug": "docuwriter-ai",
+    "candidateAsset": "docuwriter-ai.png",
+    "reason": "Contact sheet shows a product UI screenshot sourced from og-image.png, not a standalone brand logo."
+  },
+  {
+    "slug": "quick-creator",
+    "candidateAsset": "quick-creator.webp",
+    "reason": "Contact sheet shows a product UI screenshot sourced from image-banner.webp, not a standalone brand logo."
+  },
+  {
+    "slug": "clearscope",
+    "candidateAsset": "clearscope.webp",
+    "reason": "Contact sheet shows a person's portrait rather than a brand mark."
+  },
+  {
+    "slug": "adswithai",
+    "candidateAsset": "adswithai.png",
+    "reason": "Contact sheet shows an unrelated Vietnamese sports brand graphic, and the image is hosted on an unrelated domain."
+  }
+]

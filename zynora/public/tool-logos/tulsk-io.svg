@@ -1,0 +1,9 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="160" height="160"/>
+<g style="mix-blend-mode:multiply">
+<ellipse cx="79.5" cy="101" rx="31.5" ry="33" transform="rotate(-90 79.5 101)" fill="#F99A1A"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<ellipse cx="79.5" cy="59.5" rx="32" ry="33" transform="rotate(-90 79.5 59.5)" fill="#FA53CB"/>
+</g>
+</svg>
