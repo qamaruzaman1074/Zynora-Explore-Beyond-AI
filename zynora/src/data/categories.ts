@@ -52,6 +52,25 @@ function createGroup(
 
 export const categoryGroups: readonly CategoryGroup[] = [
   createGroup(
+    'Web Development',
+    'Discover the tools, platforms, and AI-powered resources you need to design, develop, host, and launch websites. From AI website builders and coding assistants to free hosting, domains, databases, and developer resources.',
+    'Code2',
+    true,
+    [
+      child('Free Hosting & Deployment', 'Cloud'),
+      child('Free Domains & Subdomains', 'Globe2'),
+      child('AI Website Builders', 'Shapes'),
+      child('AI Coding Assistants', 'Code2'),
+      child('Git & Version Control', 'Workflow'),
+      child('Code Editors & IDEs', 'Code2'),
+      child('Frontend Development', 'Presentation'),
+      child('Backend & Databases', 'Database'),
+      child('UI/UX & Design Resources', 'PenTool'),
+      child('Testing, SEO & Performance', 'SearchCheck'),
+      child('Learning & Documentation', 'BookOpen'),
+    ],
+  ),
+  createGroup(
     'Writing and content',
     'Tools that help create, refine, and publish written content.',
     'PenLine',

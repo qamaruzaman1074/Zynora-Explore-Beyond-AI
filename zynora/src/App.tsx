@@ -1,6 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowUpRight, Search } from 'lucide-react'
-import { categoryGroups, getCategoryRoute } from './data/categories'
+import {
+  categoryGroups,
+  getCategoryById,
+  getCategoryRoute,
+  getCategoryToolSlugs,
+  getGroupToolSlugs,
+  getPrimaryCategoryGroupForTool,
+} from './data/categories'
 import { getInfoPage } from './data/infoPages'
 import { getToolBySlug, tools } from './data/tools'
 import { navigate, useCurrentLocation } from './routing'
@@ -16,7 +23,20 @@ import ToolDetailPage from './components/ToolDetailPage'
 import ToolNotFoundPage from './components/ToolNotFoundPage'
 import InfoPage from './components/InfoPages'
 import AllToolsPage from './components/AllToolsPage'
+import ToolLogo from './components/ToolLogo'
+import seoConfig from './seo.config.json'
 import './App.css'
+
+function getCanonicalUrl(path: string) {
+  return new URL(path, seoConfig.siteOrigin).href
+}
+
+function trimMetaDescription(value: string) {
+  const normalized = value.replace(/\s+/g, ' ').trim()
+  return normalized.length > 160
+    ? `${normalized.slice(0, 157).trimEnd()}...`
+    : normalized
+}
 
 function TrendingCategories() {
   const trendingGroups = categoryGroups.slice(0, 3)
@@ -29,13 +49,13 @@ function TrendingCategories() {
     >
       <header className="trending-categories__header">
         <div className="section-heading">
-          <p className="eyebrow">What&apos;s popular</p>
+          <p className="eyebrow">Explore the directory</p>
           <h2 id="trending-title">
-            <span className="heading-pill">Trending</span> categories
+            <span className="heading-pill">Featured</span> categories
           </h2>
           <p className="trending-categories__description">
-            Explore popular areas of AI and jump into the subcategories that
-            match your needs.
+            Browse categories by task and find tools in areas that match your
+            workflow.
           </p>
         </div>
       </header>
@@ -54,6 +74,37 @@ function TrendingCategories() {
         </AppLink>
       </div>
     </section>
+  )
+}
+
+const homeHeroToolLogoSlugs = {
+  left: ['chatgpt', 'claude', 'midjourney', 'cursor'],
+  right: ['gemini', 'perplexity', 'runway', 'lovable'],
+} as const
+
+function HomeHeroToolLogos({ side }: { side: 'left' | 'right' }) {
+  return (
+    <div
+      className={`home-tool-logos home-tool-logos--${side}`}
+    >
+      {homeHeroToolLogoSlugs[side].map((slug) => {
+        const tool = getToolBySlug(slug)
+        if (!tool?.logo || !tool.officialWebsite) return null
+
+        return (
+          <a
+            aria-label={`Visit ${tool.name} official website (opens in a new tab)`}
+            className="home-tool-logos__item"
+            href={tool.officialWebsite}
+            key={slug}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <ToolLogo loading="eager" size={28} tool={tool} />
+          </a>
+        )
+      })}
+    </div>
   )
 }
 
@@ -154,6 +205,8 @@ function HomeHero() {
       className="home-section site-container"
       id="home"
     >
+      <HomeHeroToolLogos side="left" />
+      <HomeHeroToolLogos side="right" />
       <div className="home-copy">
         <h1 id="home-title">
           Best AI Tools
@@ -161,8 +214,8 @@ function HomeHero() {
           <span className="home-copy__title-accent">Directory</span>
         </h1>
         <p className="home-description">
-          Discover the world&apos;s leading AI tools in one place. Explore,
-          compare, and find the right tools to bring your ideas to life.
+          Discover AI tools for writing, research, design, coding, and more.
+          Browse tool profiles to explore options for different workflows.
         </p>
         <form
           className="hero-search"
@@ -171,6 +224,7 @@ function HomeHero() {
           ref={heroSearchRef}
           role="search"
         >
+          <div className="hero-search__field">
             <Search aria-hidden="true" size={20} strokeWidth={1.7} />
             <label className="visually-hidden" htmlFor="hero-tool-search">
               Search AI tools or categories
@@ -189,37 +243,38 @@ function HomeHero() {
             <button aria-label="Search" type="submit">
               Search
             </button>
-            {heroSearchOpen &&
-              normalizedHeroQuery &&
-              heroMatches.length > 0 && (
-                <div
-                  aria-label="Search suggestions"
-                  className="hero-search__results"
-                  role="listbox"
-                >
-                  {heroMatches.map((result) => (
-                    <AppLink
-                      className="hero-search__result"
-                      href={result.href}
-                      key={result.id}
-                      role="option"
-                    >
-                      <span>
-                        <strong>{result.name}</strong>
-                        <small>{result.detail}</small>
-                      </span>
-                      <ArrowUpRight aria-hidden="true" size={16} />
-                    </AppLink>
-                  ))}
-                </div>
-              )}
+          </div>
+          {heroSearchOpen &&
+            normalizedHeroQuery &&
+            heroMatches.length > 0 && (
+              <div
+                aria-label="Search suggestions"
+                className="hero-search__results"
+                role="listbox"
+              >
+                {heroMatches.map((result) => (
+                  <AppLink
+                    className="hero-search__result"
+                    href={result.href}
+                    key={result.id}
+                    role="option"
+                  >
+                    <span>
+                      <strong>{result.name}</strong>
+                      <small>{result.detail}</small>
+                    </span>
+                    <ArrowUpRight aria-hidden="true" size={16} />
+                  </AppLink>
+                ))}
+              </div>
+            )}
         </form>
         <p className="home-proof">
           <svg aria-hidden="true" viewBox="0 0 20 20">
             <path d="M10 1.5 11.9 8l6.6 2-6.6 1.9-1.9 6.6-2-6.6-6.5-1.9L8 8z" />
           </svg>
           <span>
-            {roundedToolCount.toLocaleString()}+ AI tools analyzed and listed
+            {roundedToolCount.toLocaleString()}+ AI tools in the directory
           </span>
         </p>
         <ul aria-label="Directory highlights" className="home-trust">
@@ -229,11 +284,11 @@ function HomeHero() {
           </li>
           <li>
             <span aria-hidden="true">✓</span>
-            Updated Daily
+            Profiles organized by task
           </li>
           <li>
             <span aria-hidden="true">✓</span>
-            Quality-checked Listings
+            Official links where available
           </li>
         </ul>
         <div className="home-actions">
@@ -317,29 +372,47 @@ function updateBreadcrumbSchema(
       '@type': 'ListItem',
       position: index + 1,
       name: crumb.name,
-      item: new URL(crumb.path, window.location.origin).href,
+      item: getCanonicalUrl(crumb.path),
     })),
-  })
+  }).replace(/</g, '\\u003c')
 }
 
 function App() {
   const location = useCurrentLocation()
-  const pathname = location.split(/[?#]/, 1)[0]
+  const currentUrl = new URL(location, seoConfig.siteOrigin)
+  const pathname = currentUrl.pathname.replace(/\/+$/, '') || '/'
   const detailMatch = pathname.match(/^\/tools\/([^/]+)\/?$/)
   const tool = detailMatch ? getToolBySlug(detailMatch[1]) : undefined
   const isHome = pathname === '/'
   const isAllTools = pathname === '/all-tools'
   const categoryRoute = getCategoryRoute(pathname)
   const infoPage = getInfoPage(pathname)
+  const hasSearchFilters =
+    (isHome && currentUrl.searchParams.has('q')) ||
+    (isAllTools &&
+      (currentUrl.searchParams.has('q') ||
+        currentUrl.searchParams.has('category')))
+  const isNotFound =
+    categoryRoute?.type === 'not-found' ||
+    (!isHome && !isAllTools && !categoryRoute && !tool && !infoPage)
 
   useEffect(() => {
-    const socialImageUrl = new URL('/og-image.svg', window.location.origin).href
+    const socialImageUrl = getCanonicalUrl('/og-image.svg')
+    updateMeta(
+      'name',
+      'robots',
+      hasSearchFilters || isNotFound ? 'noindex,follow' : undefined,
+    )
 
     if (categoryRoute) {
       const isCategoryNotFound = categoryRoute.type === 'not-found'
+      const categoriesCount = categoryGroups.reduce(
+        (count, group) => count + group.children.length,
+        0,
+      )
       const title =
         categoryRoute.type === 'index'
-          ? 'All AI Categories | ZYNORA'
+          ? 'AI Tool Categories by Task and Field | ZYNORA'
           : categoryRoute.type === 'group'
             ? `${categoryRoute.group.name} AI Tools | ZYNORA`
             : categoryRoute.type === 'category'
@@ -347,15 +420,19 @@ function App() {
               : 'Category Not Found | ZYNORA'
       const description =
         categoryRoute.type === 'group'
-          ? categoryRoute.group.description
+          ? trimMetaDescription(
+              `Browse ${getGroupToolSlugs(categoryRoute.group.slug).length} AI tools for ${categoryRoute.group.name.toLocaleLowerCase()}. ${categoryRoute.group.description}`,
+            )
           : categoryRoute.type === 'category'
-            ? categoryRoute.category.description
+            ? trimMetaDescription(
+                `Explore ${getCategoryToolSlugs(categoryRoute.category.slug).length} AI tools for ${categoryRoute.category.name.toLocaleLowerCase()}. ${categoryRoute.category.description}`,
+              )
             : categoryRoute.type === 'index'
-              ? 'Browse AI tools by category, task, and discipline in the ZYNORA directory.'
+              ? `Browse ${categoriesCount} AI tool categories and ${tools.length.toLocaleString()} listings by task, field, or workflow.`
               : 'The requested category could not be found in the ZYNORA directory.'
       const canonicalUrl = isCategoryNotFound
         ? undefined
-        : new URL(pathname, window.location.origin).href
+        : getCanonicalUrl(pathname)
       const crumbs =
         categoryRoute.type === 'category'
           ? [
@@ -392,85 +469,53 @@ function App() {
       updateMeta('property', 'og:site_name', 'ZYNORA')
       updateMeta('property', 'og:url', canonicalUrl)
       updateMeta('property', 'og:image', socialImageUrl)
+      updateMeta('property', 'og:image:alt', 'ZYNORA AI tools directory')
       updateMeta('name', 'twitter:card', 'summary_large_image')
       updateMeta('name', 'twitter:title', title)
       updateMeta('name', 'twitter:description', description)
       updateMeta('name', 'twitter:image', socialImageUrl)
       updateCanonical(canonicalUrl)
-      updateBreadcrumbSchema(crumbs)
+      updateBreadcrumbSchema(isCategoryNotFound ? undefined : crumbs)
       return
     }
 
     updateBreadcrumbSchema(undefined)
 
     if (isHome) {
-      const canonicalUrl = new URL('/', window.location.origin).href
-      document.title = 'ZYNORA — Explore Beyond AI'
-      updateMeta('name', 'description', 'Explore, compare, and discover AI tools with ZYNORA.')
-      updateMeta('property', 'og:title', 'ZYNORA — Explore Beyond AI')
+      const canonicalUrl = getCanonicalUrl('/')
+      const title = 'AI Tools Directory | Explore AI Tools | ZYNORA'
+      const description =
+        'Explore AI tools for writing, research, design, coding, and more. Browse ZYNORA’s directory by task and category.'
+      document.title = title
+      updateMeta('name', 'description', description)
+      updateMeta('property', 'og:title', title)
       updateMeta(
         'property',
         'og:description',
-        'Explore, compare, and discover AI tools with ZYNORA.',
+        description,
       )
       updateMeta('property', 'og:type', 'website')
       updateMeta('property', 'og:site_name', 'ZYNORA')
       updateMeta('property', 'og:url', canonicalUrl)
       updateMeta('property', 'og:image', socialImageUrl)
+      updateMeta('property', 'og:image:alt', 'ZYNORA AI tools directory')
       updateMeta('name', 'twitter:card', 'summary_large_image')
-      updateMeta('name', 'twitter:title', 'ZYNORA — Explore Beyond AI')
+      updateMeta('name', 'twitter:title', title)
       updateMeta('name', 'twitter:image', socialImageUrl)
-      updateMeta(
-        'name',
-        'twitter:description',
-        'Explore, compare, and discover AI tools with ZYNORA.',
-      )
+      updateMeta('name', 'twitter:description', description)
       updateCanonical(canonicalUrl)
       return
     }
 
     if (tool) {
-      const canonicalUrl = new URL(`/tools/${tool.slug}`, window.location.origin)
-        .href
-      const title = `${tool.name} | ZYNORA`
-      document.title = title
-      updateMeta('name', 'description', tool.shortDescription)
-      updateMeta('property', 'og:title', title)
-      updateMeta('property', 'og:description', tool.shortDescription)
-      updateMeta('property', 'og:type', 'website')
-      updateMeta('property', 'og:site_name', 'ZYNORA')
-      updateMeta('property', 'og:url', canonicalUrl)
-      updateMeta('property', 'og:image', socialImageUrl)
-      updateMeta('name', 'twitter:card', 'summary_large_image')
-      updateMeta('name', 'twitter:title', title)
-      updateMeta('name', 'twitter:image', socialImageUrl)
-      updateMeta('name', 'twitter:description', tool.shortDescription)
-      updateCanonical(canonicalUrl)
-      return
-    }
-
-    if (infoPage) {
-      const canonicalUrl = new URL(infoPage.path, window.location.origin).href
-      document.title = `${infoPage.title} | ZYNORA`
-      updateMeta('name', 'description', infoPage.description)
-      updateMeta('property', 'og:title', `${infoPage.title} | ZYNORA`)
-      updateMeta('property', 'og:description', infoPage.description)
-      updateMeta('property', 'og:type', 'website')
-      updateMeta('property', 'og:site_name', 'ZYNORA')
-      updateMeta('property', 'og:url', canonicalUrl)
-      updateMeta('property', 'og:image', socialImageUrl)
-      updateMeta('name', 'twitter:card', 'summary_large_image')
-      updateMeta('name', 'twitter:title', `${infoPage.title} | ZYNORA`)
-      updateMeta('name', 'twitter:description', infoPage.description)
-      updateMeta('name', 'twitter:image', socialImageUrl)
-      updateCanonical(canonicalUrl)
-      return
-    }
-
-    if (isAllTools) {
-      const canonicalUrl = new URL('/all-tools', window.location.origin).href
-      const title = `All AI Tools | ZYNORA`
-      const description = `Browse and sort ${tools.length.toLocaleString()} AI tools in the ZYNORA directory.`
+      const categoryName =
+        getPrimaryCategoryGroupForTool(tool.slug)?.name ??
+        (tool.categoryId ? getCategoryById(tool.categoryId).name : 'AI')
+      const canonicalUrl = getCanonicalUrl(`/tools/${tool.slug}`)
+      const title = `${tool.name} | ${categoryName} | ZYNORA`
+      const description = trimMetaDescription(
+        `${tool.shortDescription} Explore this ${categoryName.toLocaleLowerCase()} tool and visit its official website.`,
+      )
       document.title = title
       updateMeta('name', 'description', description)
       updateMeta('property', 'og:title', title)
@@ -479,15 +524,57 @@ function App() {
       updateMeta('property', 'og:site_name', 'ZYNORA')
       updateMeta('property', 'og:url', canonicalUrl)
       updateMeta('property', 'og:image', socialImageUrl)
+      updateMeta('property', 'og:image:alt', 'ZYNORA AI tools directory')
+      updateMeta('name', 'twitter:card', 'summary_large_image')
+      updateMeta('name', 'twitter:title', title)
+      updateMeta('name', 'twitter:image', socialImageUrl)
+      updateMeta('name', 'twitter:description', description)
+      updateCanonical(canonicalUrl)
+      updateBreadcrumbSchema([
+        { name: 'Explore AI Tools', path: '/' },
+        { name: tool.name, path: `/tools/${tool.slug}` },
+      ])
+      return
+    }
+
+    if (infoPage) {
+      const canonicalUrl = getCanonicalUrl(infoPage.path)
+      const title = `${infoPage.title} | ZYNORA`
+      document.title = title
+      updateMeta('name', 'description', infoPage.description)
+      updateMeta('property', 'og:title', title)
+      updateMeta('property', 'og:description', infoPage.description)
+      updateMeta('property', 'og:type', 'website')
+      updateMeta('property', 'og:site_name', 'ZYNORA')
+      updateMeta('property', 'og:url', canonicalUrl)
+      updateMeta('property', 'og:image', socialImageUrl)
+      updateMeta('property', 'og:image:alt', 'ZYNORA AI tools directory')
+      updateMeta('name', 'twitter:card', 'summary_large_image')
+      updateMeta('name', 'twitter:title', title)
+      updateMeta('name', 'twitter:description', infoPage.description)
+      updateMeta('name', 'twitter:image', socialImageUrl)
+      updateCanonical(canonicalUrl)
+      return
+    }
+
+    if (isAllTools) {
+      const canonicalUrl = getCanonicalUrl('/all-tools')
+      const title = 'All AI Tools | ZYNORA'
+      const description = `Browse ${tools.length.toLocaleString()} AI tools in the ZYNORA directory. Search by name, category, or task.`
+      document.title = title
+      updateMeta('name', 'description', description)
+      updateMeta('property', 'og:title', title)
+      updateMeta('property', 'og:description', description)
+      updateMeta('property', 'og:type', 'website')
+      updateMeta('property', 'og:site_name', 'ZYNORA')
+      updateMeta('property', 'og:url', canonicalUrl)
+      updateMeta('property', 'og:image', socialImageUrl)
+      updateMeta('property', 'og:image:alt', 'ZYNORA AI tools directory')
       updateMeta('name', 'twitter:card', 'summary_large_image')
       updateMeta('name', 'twitter:title', title)
       updateMeta('name', 'twitter:description', description)
       updateMeta('name', 'twitter:image', socialImageUrl)
       updateCanonical(canonicalUrl)
-      updateBreadcrumbSchema([
-        { name: 'Home', path: '/' },
-        { name: 'All AI Tools', path: '/all-tools' },
-      ])
       return
     }
 
@@ -507,6 +594,7 @@ function App() {
     updateMeta('property', 'og:site_name', 'ZYNORA')
     updateMeta('property', 'og:url', undefined)
     updateMeta('property', 'og:image', socialImageUrl)
+    updateMeta('property', 'og:image:alt', 'ZYNORA AI tools directory')
     updateMeta('name', 'twitter:card', 'summary_large_image')
     updateMeta('name', 'twitter:title', 'Tool Not Found | ZYNORA')
     updateMeta('name', 'twitter:image', socialImageUrl)
@@ -516,7 +604,17 @@ function App() {
       'The requested page could not be found in the ZYNORA AI tools directory.',
     )
     updateCanonical(undefined)
-  }, [categoryRoute, infoPage, isAllTools, isHome, pathname, tool])
+    updateBreadcrumbSchema(undefined)
+  }, [
+    categoryRoute,
+    hasSearchFilters,
+    infoPage,
+    isAllTools,
+    isHome,
+    isNotFound,
+    pathname,
+    tool,
+  ])
 
   useEffect(() => {
     if (window.location.hash) {

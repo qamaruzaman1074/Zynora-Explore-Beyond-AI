@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Check, Coffee, Copy, X } from 'lucide-react'
+import easypaisaLogo from '../assets/payment-logos/easypaisa.png'
+import jazzcashLogo from '../assets/payment-logos/jazzcash.png'
 import AppLink from './AppLink'
 import AnimatedLogo from '../AnimatedLogo'
 import './SiteFooter.css'
@@ -7,7 +9,7 @@ import './SiteFooter.css'
 const exploreLinks = [
   { label: 'AI Tools', href: '/#explore' },
   { label: 'Categories', href: '/categories' },
-  { label: 'Trending', href: '/#trending' },
+  { label: 'Categories', href: '/#trending' },
   { label: 'Submit AI Tool', href: '/submit-ai-tool' },
 ]
 
@@ -85,7 +87,7 @@ function SiteFooter() {
           <AppLink
             aria-label="ZYNORA home"
             className="site-footer__logo"
-            href="/#home"
+            href="/"
           >
             <AnimatedLogo />
           </AppLink>
@@ -167,15 +169,35 @@ function SiteFooter() {
             <p className="coffee-modal__eyebrow">Support ZYNORA</p>
             <h2>Buy me a Coffee</h2>
             <p className="coffee-modal__description">
-              Send your support through Easypaisa.
+              Send your support through Easypaisa or JazzCash.
             </p>
+            <div className="coffee-modal__payment-logos">
+              <img
+                alt="Easypaisa logo"
+                className="coffee-modal__payment-logo"
+                decoding="async"
+                height={112}
+                loading="lazy"
+                src={easypaisaLogo}
+                width={112}
+              />
+              <img
+                alt="JazzCash logo"
+                className="coffee-modal__payment-logo"
+                decoding="async"
+                height={112}
+                loading="lazy"
+                src={jazzcashLogo}
+                width={112}
+              />
+            </div>
             <button
               className="coffee-modal__number"
               onClick={copyPaymentNumber}
               type="button"
             >
               <span>
-                <small>Easypaisa number</small>
+                <small>Easypaisa &amp; Jazz Cash Number</small>
                 <strong>0370 4204775</strong>
               </span>
               <span className={copied ? 'is-copied' : ''}>

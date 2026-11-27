@@ -1,18 +1,15 @@
+import { ArrowUpRight } from 'lucide-react'
 import {
   getCategoryById,
   getPrimaryCategoryGroupForTool,
 } from '../data/categories'
 import { tools } from '../data/tools'
-import type { AITool, PricingTier } from '../types/tool'
+import type { AITool } from '../types/tool'
 import AppLink from './AppLink'
 import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
 import ToolLogo from './ToolLogo'
 import './ToolDetailPage.css'
-
-function pricingClassName(pricing: PricingTier) {
-  return pricing.toLocaleLowerCase().replace(/\s+/g, '-')
-}
 
 type ToolDetailPageProps = {
   tool: AITool
@@ -71,11 +68,6 @@ function ToolDetailPage({ tool }: ToolDetailPageProps) {
               </div>
             </div>
             <div className="tool-detail__actions">
-              <span
-                className={`tool-detail__pricing tool-detail__pricing--${pricingClassName(tool.pricing)}`}
-              >
-                {tool.pricing}
-              </span>
               {tool.officialWebsite ? (
                 <a
                   className="button button--accent"
@@ -93,111 +85,41 @@ function ToolDetailPage({ tool }: ToolDetailPageProps) {
             </div>
           </header>
 
-          <div className="tool-detail__content">
+          {relatedTools.length > 0 && (
             <section
-              aria-labelledby="tool-overview-title"
-              className="tool-detail__panel card"
+              aria-labelledby="related-tools-title"
+              className="tool-detail__related"
             >
-              <h2 id="tool-overview-title">Overview</h2>
-              <p>{tool.longDescription ?? tool.shortDescription}</p>
-              {!tool.longDescription && (
-                <p className="tool-detail__note">
-                  This profile contains a brief directory summary. Check the
-                  official website for current product information.
-                </p>
-              )}
-            </section>
-
-            <div className="tool-detail__columns">
-              <section
-                aria-labelledby="tool-features-title"
-                className="tool-detail__panel card"
-              >
-                <h2 id="tool-features-title">Main features</h2>
-                {tool.features?.length ? (
-                  <ul>
-                    {tool.features.map((feature) => (
-                      <li key={feature}>{feature}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="tool-detail__note">
-                    No additional feature details have been verified yet.
-                  </p>
-                )}
-              </section>
-
-              <section
-                aria-labelledby="tool-use-cases-title"
-                className="tool-detail__panel card"
-              >
-                <h2 id="tool-use-cases-title">Common use cases</h2>
-                {tool.useCases?.length ? (
-                  <ul>
-                    {tool.useCases.map((useCase) => (
-                      <li key={useCase}>{useCase}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="tool-detail__note">
-                    No additional use-case details have been verified yet.
-                  </p>
-                )}
-              </section>
-            </div>
-
-            <section
-              aria-labelledby="tool-pricing-title"
-              className="tool-detail__panel card"
-            >
-              <h2 id="tool-pricing-title">Pricing information</h2>
-              <p>
-                Pricing status: <strong>{tool.pricing}</strong>
-              </p>
-              <p className="tool-detail__note">
-                {tool.pricingNotes ??
-                  (tool.pricing === 'Unverified'
-                    ? tool.officialWebsite
-                      ? 'Current pricing has not been verified. Check the official website for the latest information.'
-                      : 'Current pricing and official website have not been verified yet.'
-                    : 'Plans and availability can change. Check the official website for current pricing details.')}
-              </p>
-              {tool.lastVerified && (
-                <p className="tool-detail__verified">
-                  Last verified:{' '}
-                  <time dateTime={tool.lastVerified}>{tool.lastVerified}</time>
-                </p>
-              )}
-            </section>
-
-            {relatedTools.length > 0 && (
-              <section
-                aria-labelledby="related-tools-title"
-                className="tool-detail__related"
-              >
-                <div className="tool-detail__section-heading">
-                  <div>
-                    <p className="eyebrow">Explore more</p>
-                    <h2 id="related-tools-title">Related tools</h2>
-                  </div>
-                  <span>{categoryName}</span>
+              <div className="tool-detail__section-heading">
+                <div>
+                  <p className="eyebrow">Recommended for you</p>
+                  <h2 id="related-tools-title">More in {categoryName}</h2>
                 </div>
-                <div className="tool-detail__related-grid">
-                  {relatedTools.map((relatedTool) => (
-                    <AppLink
-                      className="tool-detail__related-card card"
-                      href={`/tools/${relatedTool.slug}`}
-                      key={relatedTool.id}
-                    >
-                      <span>{relatedTool.name}</span>
-                      <span aria-hidden="true">↗</span>
-                      <small>{relatedTool.shortDescription}</small>
-                    </AppLink>
-                  ))}
-                </div>
-              </section>
-            )}
-          </div>
+                <span>{relatedTools.length} suggestions</span>
+              </div>
+              <div className="tool-detail__related-grid">
+                {relatedTools.map((relatedTool) => (
+                  <AppLink
+                    aria-label={`View details for ${relatedTool.name}`}
+                    className="tool-detail__related-card card"
+                    href={`/tools/${relatedTool.slug}`}
+                    key={relatedTool.id}
+                  >
+                    <span className="tool-detail__related-topline">
+                      <span className="tool-detail__related-logo">
+                        <ToolLogo size={30} tool={relatedTool} />
+                      </span>
+                      <ArrowUpRight aria-hidden="true" size={18} />
+                    </span>
+                    <span className="tool-detail__related-name">
+                      {relatedTool.name}
+                    </span>
+                    <small>{relatedTool.shortDescription}</small>
+                  </AppLink>
+                ))}
+              </div>
+            </section>
+          )}
         </article>
       </main>
       <SiteFooter />

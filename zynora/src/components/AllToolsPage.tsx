@@ -12,6 +12,8 @@ function AllToolsPage() {
   const [query, setQuery] = useState('')
   const [sort, setSort] = useState<SortOption>('az')
   const [category, setCategory] = useState('all')
+  const [pricing, setPricing] = useState('all')
+  const [openSource, setOpenSource] = useState('all')
   const [page, setPage] = useState(1)
 
   const matchingTools = useMemo(() => {
@@ -25,7 +27,17 @@ function AllToolsPage() {
       const matchesCategory =
         category === 'all' ||
         tool.categorySlugs?.includes(category) === true
-      return matchesQuery && matchesCategory
+      const matchesPricing =
+        pricing === 'all' ||
+        (pricing === 'Paid'
+          ? tool.pricing === 'Paid' || tool.pricing === 'Premium'
+          : tool.pricing === pricing)
+      const matchesOpenSource =
+        openSource === 'all' ||
+        (openSource === 'yes'
+          ? tool.openSource === true
+          : tool.openSource !== true)
+      return matchesQuery && matchesCategory && matchesPricing && matchesOpenSource
     })
 
     return [...filtered].sort((first, second) => {
@@ -42,7 +54,7 @@ function AllToolsPage() {
       }
       return first.name.localeCompare(second.name)
     })
-  }, [category, query, sort])
+  }, [category, openSource, pricing, query, sort])
 
   const pageCount = Math.max(1, Math.ceil(matchingTools.length / pageSize))
   const currentPage = Math.min(page, pageCount)
@@ -65,8 +77,8 @@ function AllToolsPage() {
             All <span className="heading-pill">AI Tools</span>
           </h1>
           <p>
-            Browse all {tools.length.toLocaleString()} logo-verified listings
-            from ZYNORA.
+            Browse all {tools.length.toLocaleString()} AI tool listings in
+            ZYNORA.
           </p>
         </div>
       </section>
@@ -133,6 +145,36 @@ function AllToolsPage() {
               <option value="za">Name: Z-A</option>
               <option value="featured">Featured first</option>
               <option value="popular">Most popular</option>
+            </select>
+          </label>
+          <label className="all-tools-control">
+            <span>Pricing</span>
+            <select
+              onChange={(event) => {
+                setPricing(event.target.value)
+                setPage(1)
+              }}
+              value={pricing}
+            >
+              <option value="all">All pricing</option>
+              <option value="Free">Free</option>
+              <option value="Freemium">Freemium</option>
+              <option value="Paid">Paid</option>
+              <option value="Unverified">Unverified</option>
+            </select>
+          </label>
+          <label className="all-tools-control">
+            <span>Open source</span>
+            <select
+              onChange={(event) => {
+                setOpenSource(event.target.value)
+                setPage(1)
+              }}
+              value={openSource}
+            >
+              <option value="all">All tools</option>
+              <option value="yes">Open source</option>
+              <option value="no">Not verified open source</option>
             </select>
           </label>
         </div>

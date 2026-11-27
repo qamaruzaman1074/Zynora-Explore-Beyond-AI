@@ -8,10 +8,7 @@ function BrandSplash({ onComplete }: { onComplete: () => void }) {
   const [exiting, setExiting] = useState(false)
 
   useEffect(() => {
-    const reduceMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches
-    const exitDelay = reduceMotion ? 900 : 2000
+    const exitDelay = 3000
     const exitTimer = window.setTimeout(() => setExiting(true), exitDelay - 300)
     const completeTimer = window.setTimeout(onComplete, exitDelay)
 
@@ -26,8 +23,16 @@ function BrandSplash({ onComplete }: { onComplete: () => void }) {
       aria-label="ZYNORA — Universe of AI"
       aria-live="polite"
       className={`brand-splash${exiting ? ' brand-splash--exiting' : ''}`}
+      onClick={onComplete}
       role="status"
     >
+      <button
+        aria-label="Skip ZYNORA intro animation"
+        className="brand-splash__skip"
+        type="button"
+      >
+        Skip
+      </button>
       <div className="brand-splash__glow" aria-hidden="true" />
       <div className="brand-splash__content">
         <div className="brand-splash__name" aria-hidden="true">

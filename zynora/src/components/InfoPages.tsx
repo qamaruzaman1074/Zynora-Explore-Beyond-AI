@@ -1,4 +1,7 @@
 import { useState, type FormEvent, type ReactNode } from 'react'
+import githubLogo from '../assets/social/github.png'
+import instagramLogo from '../assets/social/instagram.png'
+import linkedinLogo from '../assets/social/linkedin.png'
 import type { InfoPageDefinition } from '../data/infoPages'
 import AppLink from './AppLink'
 import './InfoPages.css'
@@ -53,6 +56,82 @@ function AboutContent() {
           <AppLink href="/contact-us">Contact Us page</AppLink>.
         </p>
       </ContentSection>
+      <section
+        aria-labelledby="founder-title"
+        className="info-page__section founder-card"
+      >
+        <div>
+          <p className="eyebrow">The person behind ZYNORA</p>
+          <h2 id="founder-title">Meet the Founder</h2>
+        </div>
+        <div className="founder-card__bio">
+          <h3>Qamar u Zaman</h3>
+          <p className="founder-card__role">Founder of ZYNORA</p>
+          <p>
+            Building ZYNORA with a vision to make AI discovery simple,
+            accessible, and effortless. My goal is to bring the world&apos;s AI
+            tools together in one place, helping everyone explore the
+            possibilities of artificial intelligence.
+          </p>
+        </div>
+        <div className="founder-card__connect">
+          <h3>Connect with me</h3>
+          <ul className="founder-social-links">
+            <li>
+              <a
+                aria-label="Connect with Qamar u Zaman on LinkedIn (opens in a new tab)"
+                href="https://www.linkedin.com/in/qamar-u-zaman/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <img
+                  alt=""
+                  height={28}
+                  loading="lazy"
+                  src={linkedinLogo}
+                  width={28}
+                />
+                <span>LinkedIn</span>
+              </a>
+            </li>
+            <li>
+              <a
+                aria-label="View Qamar u Zaman on GitHub (opens in a new tab)"
+                href="https://github.com/qamaruzaman1074"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <img
+                  alt=""
+                  height={28}
+                  loading="lazy"
+                  src={githubLogo}
+                  width={28}
+                />
+                <span>GitHub</span>
+              </a>
+            </li>
+            <li>
+              <a
+                aria-label="Follow Qamar u Zaman on Instagram (opens in a new tab)"
+                href="https://www.instagram.com/qamaruzaman_313/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <img
+                  alt=""
+                  height={28}
+                  loading="lazy"
+                  src={instagramLogo}
+                  width={28}
+                />
+                <span>Instagram</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <p className="founder-card__tagline">ZYNORA — Explore Beyond AI.</p>
+      </section>
     </>
   )
 }
@@ -67,7 +146,7 @@ function ContactContent() {
           relevant tool name or page URL so we can understand your request.
         </p>
         <p className="info-page__contact-link">
-          <a href="mailto:zynora@gmail.com">zynora@gmail.com</a>
+          <a href="mailto:zynora.tools@gmail.com">zynora.tools@gmail.com</a>
         </p>
       </ContentSection>
       <ContentSection title="Listing corrections">
@@ -94,7 +173,7 @@ function PrivacyContent() {
         <p>
           ZYNORA is an AI tools discovery directory operated by ZYNORA in
           Pakistan. For privacy questions or requests, contact{' '}
-          <a href="mailto:zynora@gmail.com">zynora@gmail.com</a>.
+          <a href="mailto:zynora.tools@gmail.com">zynora.tools@gmail.com</a>.
         </p>
       </ContentSection>
       <ContentSection title="Information we may handle">
@@ -168,7 +247,8 @@ function PrivacyContent() {
           but cannot guarantee that internet transmission or storage is
           completely secure. Depending on applicable law, you may request access
           to, correction of, or deletion of personal information you provided.
-          Contact us at <a href="mailto:zynora@gmail.com">zynora@gmail.com</a>.
+          Contact us at{' '}
+          <a href="mailto:zynora.tools@gmail.com">zynora.tools@gmail.com</a>.
         </p>
       </ContentSection>
       <ContentSection title="Children and policy updates">
@@ -235,7 +315,7 @@ function TermsContent() {
           Continued use after an update means the revised terms apply to future
           use. These terms are governed by the laws of Pakistan, subject to any
           mandatory protections that apply to you. Questions can be sent to{' '}
-          <a href="mailto:zynora@gmail.com">zynora@gmail.com</a>.
+          <a href="mailto:zynora.tools@gmail.com">zynora.tools@gmail.com</a>.
         </p>
       </ContentSection>
     </>
@@ -343,7 +423,8 @@ function CookiesContent() {
       <ContentSection title="Contact">
         <p>
           Questions about this policy? Email{' '}
-          <a href="mailto:zynora@gmail.com">zynora@gmail.com</a> or read our{' '}
+          <a href="mailto:zynora.tools@gmail.com">zynora.tools@gmail.com</a> or
+          read our{' '}
           <AppLink href="/privacy-policy">Privacy Policy</AppLink>.
         </p>
       </ContentSection>
@@ -384,7 +465,7 @@ function SubmitToolContent() {
     ].join('\n')
 
     window.location.href =
-      `mailto:zynora@gmail.com?subject=${encodeURIComponent(emailSubject)}` +
+      `mailto:zynora.tools@gmail.com?subject=${encodeURIComponent(emailSubject)}` +
       `&body=${encodeURIComponent(emailBody)}`
 
     setStatus(
@@ -461,8 +542,8 @@ function SubmitToolContent() {
         </p>
         <p className="submit-tool-form__note">
           Submissions open your email app so you can send the details to{' '}
-          <a href="mailto:zynora@gmail.com">zynora@gmail.com</a>. If it does not
-          open, email us directly with the same information.
+          <a href="mailto:zynora.tools@gmail.com">zynora.tools@gmail.com</a>. If
+          it does not open, email us directly with the same information.
         </p>
       </form>
     </>
@@ -493,12 +574,12 @@ const frequentlyAskedQuestions = [
   {
     question: 'What should I do if a listing is inaccurate or a link is broken?',
     answer:
-      'Send the tool name, listing URL, and the correction or working official link to zynora@gmail.com. We review directory feedback but cannot guarantee a particular change.',
+      'Send the tool name, listing URL, and the correction or working official link to zynora.tools@gmail.com. We review directory feedback but cannot guarantee a particular change.',
   },
   {
     question: 'How can I suggest a tool?',
     answer:
-      'Email zynora@gmail.com with the tool name, its official website, and a short explanation of what it does. Suggestions are reviewed for relevance to the directory.',
+      'Email zynora.tools@gmail.com with the tool name, its official website, and a short explanation of what it does. Suggestions are reviewed for relevance to the directory.',
   },
   {
     question: 'Why do I see advertisements?',

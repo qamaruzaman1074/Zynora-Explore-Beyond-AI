@@ -21,7 +21,16 @@ export function navigate(to: string) {
   }
 
   const nextLocation = `${destination.pathname}${destination.search}${destination.hash}`
-  if (nextLocation === getLocationSnapshot()) return
+  if (nextLocation === getLocationSnapshot()) {
+    if (
+      destination.pathname === '/' &&
+      destination.search === '' &&
+      destination.hash === ''
+    ) {
+      window.scrollTo(0, 0)
+    }
+    return
+  }
 
   window.history.pushState(null, '', nextLocation)
   window.dispatchEvent(new PopStateEvent('popstate'))

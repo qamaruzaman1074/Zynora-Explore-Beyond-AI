@@ -104,6 +104,7 @@ export type AITool = {
   slug: string
   categoryId?: CategoryId
   categorySlugs?: readonly string[]
+  openSource?: boolean | 'Unverified'
   shortDescription: string
   officialWebsite: string | null
   logo: string | null

@@ -235,3 +235,9 @@
     transform: none;
   }
 }
+
+@media (max-width: 767px) {
+  .category-pill {
+    min-height: 48px;
+  }
+}

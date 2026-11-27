@@ -136,6 +136,26 @@
   }
 }
 
+@media (max-width: 767px) {
+  .homepage-categories__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .homepage-categories__all {
+    align-self: flex-start;
+  }
+
+  .homepage-categories__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .category-browse-card {
+    min-height: 220px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .category-browse-card,
   .category-browse-card__button {

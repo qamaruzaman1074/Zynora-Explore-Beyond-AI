@@ -330,6 +330,29 @@
   }
 }
 
+@media (max-width: 767px) {
+  .directory-controls,
+  .tool-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .directory-results {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-block: var(--space-3);
+  }
+
+  .directory-pagination {
+    flex-wrap: wrap;
+  }
+
+  .directory-results__clear,
+  .directory-pagination .button,
+  .tool-card__link {
+    min-height: 48px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .tool-card {
     transition: none;

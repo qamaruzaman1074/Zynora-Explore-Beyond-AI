@@ -54,8 +54,10 @@ function PopularPlatforms() {
                 <img
                   alt={`${platform.name} logo`}
                   decoding="async"
+                  height={30}
                   loading="lazy"
                   src={platform.logo}
+                  width={74}
                 />
               </span>
               <span className="popular-platform__name">{platform.name}</span>

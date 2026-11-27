@@ -1,12 +1,14 @@
 import adobefireflyLogo from '../assets/tool-logos/adobefirefly.svg'
 import chatgptLogo from '../assets/tool-logos/openai.svg'
 import copilotLogo from '../assets/tool-logos/copilot.svg'
-import lovableLogo from '../assets/tool-logos/lovable.svg'
+import cursorLogo from '../assets/tool-logos/cursor.png'
+import lovableLogo from '../assets/tool-logos/lovable.png'
 import makeLogo from '../assets/tool-logos/make.svg'
 import midjourneyLogo from '../assets/tool-logos/midjourney.svg'
 import perplexityLogo from '../assets/tool-logos/perplexity.svg'
 import phindLogo from '../assets/tool-logos/phind.svg'
 import type { AITool, LogoProvenance } from '../types/tool'
+import { webDevelopmentTools } from './webDevelopmentTools'
 
 type CuratedTool = Omit<
   AITool,
@@ -232,7 +234,7 @@ const curatedToolDefinitions: readonly CuratedTool[] = [
     shortDescription:
       'An AI coding environment for writing, understanding, and modifying code.',
     officialWebsite: 'https://cursor.com/',
-    logo: "/tool-logos/cursor.png",
+    logo: cursorLogo,
     pricing: 'Freemium',
     featured: true,
     tags: ['code editor', 'coding', 'developer tools', 'agent'],
@@ -539,7 +541,17 @@ function parseWorkbookTools(value: unknown): AITool[] {
   })
 }
 
-export const tools: AITool[] = curatedTools.map((tool) => ({ ...tool }))
+export const tools: AITool[] = [
+  ...curatedTools.map((tool) => ({ ...tool })),
+  ...webDevelopmentTools
+    .filter(
+      (webTool) =>
+        !curatedTools.some(
+          (tool) => normalizeToolName(tool.name) === normalizeToolName(webTool.name),
+        ),
+    )
+    .map((tool) => ({ ...tool })),
+]
 
 export function loadWorkbookTools(value: unknown) {
   const workbookTools = parseWorkbookTools(value)
@@ -558,6 +570,10 @@ export function loadWorkbookTools(value: unknown) {
   )
   const mergedTools: AITool[] = curatedTools.map((tool) => {
     const workbookTool = workbookToolsByName.get(normalizeToolName(tool.name))
+    const webTool = webDevelopmentTools.find(
+      (candidate) =>
+        normalizeToolName(candidate.name) === normalizeToolName(tool.name),
+    )
     const aliasedWorkbookTool = workbookLogoAliases[tool.slug]
       ? workbookToolsByName.get(
           normalizeToolName(workbookLogoAliases[tool.slug]),
@@ -588,13 +604,18 @@ export function loadWorkbookTools(value: unknown) {
       ...tool,
       categorySlugs:
         categorySlugOverrides[tool.slug] ??
-        workbookTool?.categorySlugs ??
-        tool.categorySlugs ??
-        [],
+        [
+          ...new Set([
+            ...(workbookTool?.categorySlugs ?? []),
+            ...(tool.categorySlugs ?? []),
+            ...(webTool?.categorySlugs ?? []),
+          ]),
+        ],
       officialWebsite: tool.officialWebsite ?? workbookTool?.officialWebsite ?? null,
       logo: tool.logo ?? workbookTool?.logo ?? aliasedWorkbookTool?.logo ?? null,
       ...logoMetadata,
       tags: [...new Set([...tool.tags, ...(workbookTool?.tags ?? [])])],
+      openSource: webTool?.openSource ?? tool.openSource,
       popularity: workbookTool?.popularity ?? 0,
     }
   })
@@ -609,6 +630,35 @@ export function loadWorkbookTools(value: unknown) {
           categorySlugOverrides[tool.slug] ?? tool.categorySlugs,
       })),
   )
+  webDevelopmentTools.forEach((webTool) => {
+    const existing = mergedTools.find(
+      (tool) => normalizeToolName(tool.name) === normalizeToolName(webTool.name),
+    )
+    if (existing) {
+      existing.categorySlugs = [
+        ...new Set([
+          ...(existing.categorySlugs ?? []),
+          ...(webTool.categorySlugs ?? []),
+        ]),
+      ]
+      existing.openSource = webTool.openSource
+      existing.tags = [...new Set([...existing.tags, ...webTool.tags])]
+      existing.officialWebsite =
+        existing.officialWebsite ?? webTool.officialWebsite
+      if (existing.logo === null && webTool.logo !== null) {
+        existing.logo = webTool.logo
+        existing.logoProvenance = webTool.logoProvenance
+        existing.logoVerificationStatus = webTool.logoVerificationStatus
+        existing.logoSourceUrl = webTool.logoSourceUrl
+      }
+      existing.shortDescription =
+        existing.shortDescription.trim()
+          ? existing.shortDescription
+          : webTool.shortDescription
+    } else {
+      mergedTools.push({ ...webTool, popularity: 0 })
+    }
+  })
   tools.splice(0, tools.length, ...mergedTools)
 }
 

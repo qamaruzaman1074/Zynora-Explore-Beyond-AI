@@ -205,3 +205,27 @@
     min-width: 0;
   }
 }
+
+@media (max-width: 767px) {
+  .all-tools-page__header {
+    padding-block: var(--space-4) var(--space-3);
+  }
+
+  .all-tools-controls,
+  .all-tools-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .all-tools-control--clear {
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .all-tools-pagination button {
+    min-height: 48px;
+  }
+
+  .all-tools-pagination {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,655 @@
+{
+  "generatedAt": "2026-11-23",
+  "logos": {
+    "cloudflare-pages": {
+      "name": "Cloudflare Pages",
+      "officialWebsite": "https://pages.cloudflare.com/",
+      "localPath": "/tool-logos/web-development/cloudflare-pages.png",
+      "sourceUrl": "https://www.cloudflare.com/favicon.ico",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 99,
+      "height": 96
+    },
+    "netlify": {
+      "name": "Netlify",
+      "officialWebsite": "https://www.netlify.com/",
+      "localPath": "/tool-logos/web-development/netlify.png",
+      "sourceUrl": "https://www.netlify.com/favicon/v2/icon.svg",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 32,
+      "height": 32
+    },
+    "vercel": {
+      "name": "Vercel",
+      "officialWebsite": "https://vercel.com/",
+      "localPath": "/tool-logos/web-development/vercel.png",
+      "sourceUrl": "https://assets.vercel.com/image/upload/q_auto/front/favicon/vercel/apple-touch-icon-57x57.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 57,
+      "height": 57
+    },
+    "firebase-hosting": {
+      "name": "Firebase Hosting",
+      "officialWebsite": "https://firebase.google.com/products/hosting",
+      "localPath": "/tool-logos/web-development/firebase-hosting.png",
+      "sourceUrl": "https://www.gstatic.com/devrel-devsite/prod/vc11e4c9d4c060345ba98585d538d4546e842f4a6ee5c5f9e85be4bd345767217/firebase/images/favicon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 32,
+      "height": 32
+    },
+    "gitlab-pages": {
+      "name": "GitLab Pages",
+      "officialWebsite": "https://docs.gitlab.com/user/project/pages/",
+      "localPath": "/tool-logos/web-development/gitlab-pages.png",
+      "sourceUrl": "https://docs.gitlab.com/favicon.svg",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 16,
+      "height": 16
+    },
+    "is-a-dev": {
+      "name": "is-a.dev",
+      "officialWebsite": "https://is-a.dev/",
+      "localPath": "/tool-logos/web-development/is-a-dev.png",
+      "sourceUrl": "https://is-a.dev/assets/logo.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 400,
+      "height": 400
+    },
+    "lovable": {
+      "name": "Lovable",
+      "officialWebsite": "https://lovable.dev/",
+      "localPath": "/tool-logos/web-development/lovable.png",
+      "sourceUrl": "https://lovable.dev/favicon.ico",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 73,
+      "height": 74
+    },
+    "bolt-new": {
+      "name": "Bolt.new",
+      "officialWebsite": "https://bolt.new/",
+      "localPath": "/tool-logos/web-development/bolt-new.png",
+      "sourceUrl": "https://bolt.new/static/favicon.svg",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 16,
+      "height": 16
+    },
+    "v0": {
+      "name": "v0",
+      "officialWebsite": "https://v0.app/",
+      "localPath": "/tool-logos/web-development/v0.png",
+      "sourceUrl": "https://v0.app/assets/icon-light-32x32.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 32,
+      "height": 32
+    },
+    "framer-ai": {
+      "name": "Framer AI",
+      "officialWebsite": "https://www.framer.com/",
+      "localPath": "/tool-logos/web-development/framer-ai.png",
+      "sourceUrl": "https://framerusercontent.com/images/Io89FonxEaWg4nxvQQllVLwPUUI.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 64,
+      "height": 64
+    },
+    "wix-ai": {
+      "name": "Wix AI",
+      "officialWebsite": "https://www.wix.com/",
+      "localPath": "/tool-logos/web-development/wix-ai.png",
+      "sourceUrl": "https://www.wix.com/favicon.ico",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 192,
+      "height": 192
+    },
+    "webflow": {
+      "name": "Webflow",
+      "officialWebsite": "https://webflow.com/",
+      "localPath": "/tool-logos/web-development/webflow.png",
+      "sourceUrl": "https://cdn.prod.website-files.com/686294e263eb7e215bd232f7/686d53ceda66a40cb6b6d546_favicon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 32,
+      "height": 32
+    },
+    "durable": {
+      "name": "Durable",
+      "officialWebsite": "https://durable.co/",
+      "localPath": "/tool-logos/web-development/durable.png",
+      "sourceUrl": "https://durable.com/apple-touch-icon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 180,
+      "height": 180
+    },
+    "cursor": {
+      "name": "Cursor",
+      "officialWebsite": "https://cursor.com/",
+      "localPath": "/tool-logos/web-development/cursor.png",
+      "sourceUrl": "https://cursor.com/marketing-static/icon-192x192-light.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 192,
+      "height": 192
+    },
+    "windsurf": {
+      "name": "Windsurf",
+      "officialWebsite": "https://windsurf.com/",
+      "localPath": "/tool-logos/web-development/windsurf.png",
+      "sourceUrl": "https://devin.ai/favicon.svg",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 425,
+      "height": 425
+    },
+    "claude-code": {
+      "name": "Claude Code",
+      "officialWebsite": "https://claude.com/product/claude-code",
+      "localPath": "/tool-logos/web-development/claude-code.png",
+      "sourceUrl": "https://claude.com/icon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 192,
+      "height": 192
+    },
+    "gemini-code-assist": {
+      "name": "Gemini Code Assist",
+      "officialWebsite": "https://codeassist.google/",
+      "localPath": "/tool-logos/web-development/gemini-code-assist.png",
+      "sourceUrl": "https://www.gstatic.com/devrel-devsite/prod/vc11e4c9d4c060345ba98585d538d4546e842f4a6ee5c5f9e85be4bd345767217/developers/images/favicon-new.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 24,
+      "height": 24
+    },
+    "continue": {
+      "name": "Continue",
+      "officialWebsite": "https://www.continue.dev/",
+      "localPath": "/tool-logos/web-development/continue.png",
+      "sourceUrl": "https://continue.dev/favicon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 256,
+      "height": 256
+    },
+    "gitlab": {
+      "name": "GitLab",
+      "officialWebsite": "https://gitlab.com/",
+      "localPath": "/tool-logos/web-development/gitlab.png",
+      "sourceUrl": "https://about.gitlab.com/images/ico/favicon-32x32.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 32,
+      "height": 32
+    },
+    "gitea": {
+      "name": "Gitea",
+      "officialWebsite": "https://about.gitea.com/",
+      "localPath": "/tool-logos/web-development/gitea.png",
+      "sourceUrl": "https://about.gitea.com/gitea.svg",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 640,
+      "height": 640
+    },
+    "sourcetree": {
+      "name": "SourceTree",
+      "officialWebsite": "https://www.sourcetreeapp.com/",
+      "localPath": "/tool-logos/web-development/sourcetree.png",
+      "sourceUrl": "https://dam-cdn.atl.orangelogic.com/AssetLink/5140xb7orvf7timubceisv3470t0305a.webp",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 811,
+      "height": 812
+    },
+    "visual-studio-code": {
+      "name": "Visual Studio Code",
+      "officialWebsite": "https://code.visualstudio.com/",
+      "localPath": "/tool-logos/web-development/visual-studio-code.png",
+      "sourceUrl": "https://code.visualstudio.com/assets/apple-touch-icon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 256,
+      "height": 256
+    },
+    "zed": {
+      "name": "Zed",
+      "officialWebsite": "https://zed.dev/",
+      "localPath": "/tool-logos/web-development/zed.png",
+      "sourceUrl": "https://zed.dev/favicon_black_16.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 16,
+      "height": 16
+    },
+    "stackblitz": {
+      "name": "StackBlitz",
+      "officialWebsite": "https://stackblitz.com/",
+      "localPath": "/tool-logos/web-development/stackblitz.png",
+      "sourceUrl": "https://stackblitz.com/_astro/favicon.svg",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 16,
+      "height": 16
+    },
+    "jsfiddle": {
+      "name": "JSFiddle",
+      "officialWebsite": "https://jsfiddle.net/",
+      "localPath": "/tool-logos/web-development/jsfiddle.png",
+      "sourceUrl": "https://jsfiddle.net/img/favicon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 32,
+      "height": 32
+    },
+    "react": {
+      "name": "React",
+      "officialWebsite": "https://react.dev/",
+      "localPath": "/tool-logos/web-development/react.png",
+      "sourceUrl": "https://react.dev/apple-touch-icon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 180,
+      "height": 180
+    },
+    "next-js": {
+      "name": "Next.js",
+      "officialWebsite": "https://nextjs.org/",
+      "localPath": "/tool-logos/web-development/next-js.png",
+      "sourceUrl": "https://h8dxkfmaphn8o0p3.public.blob.vercel-storage.com/nextjs/twitter-card.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 2400,
+      "height": 1256
+    },
+    "vue-js": {
+      "name": "Vue.js",
+      "officialWebsite": "https://vuejs.org/",
+      "localPath": "/tool-logos/web-development/vue-js.png",
+      "sourceUrl": "https://vuejs.org/logo.svg",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 128,
+      "height": 128
+    },
+    "angular": {
+      "name": "Angular",
+      "officialWebsite": "https://angular.dev/",
+      "localPath": "/tool-logos/web-development/angular.png",
+      "sourceUrl": "https://angular.dev/assets/icons/apple-touch-icon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 180,
+      "height": 180
+    },
+    "svelte": {
+      "name": "Svelte",
+      "officialWebsite": "https://svelte.dev/",
+      "localPath": "/tool-logos/web-development/svelte.png",
+      "sourceUrl": "https://svelte.dev/favicon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 128,
+      "height": 128
+    },
+    "astro": {
+      "name": "Astro",
+      "officialWebsite": "https://astro.build/",
+      "localPath": "/tool-logos/web-development/astro.png",
+      "sourceUrl": "https://astro.build/favicon.svg",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 128,
+      "height": 128
+    },
+    "tailwind-css": {
+      "name": "Tailwind CSS",
+      "officialWebsite": "https://tailwindcss.com/",
+      "localPath": "/tool-logos/web-development/tailwind-css.png",
+      "sourceUrl": "https://tailwindcss.com/favicons/apple-touch-icon.png?v=4",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 180,
+      "height": 180
+    },
+    "bootstrap": {
+      "name": "Bootstrap",
+      "officialWebsite": "https://getbootstrap.com/",
+      "localPath": "/tool-logos/web-development/bootstrap.png",
+      "sourceUrl": "https://getbootstrap.com/docs/6.0/assets/img/favicons/apple-touch-icon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 180,
+      "height": 180
+    },
+    "supabase": {
+      "name": "Supabase",
+      "officialWebsite": "https://supabase.com/",
+      "localPath": "/tool-logos/web-development/supabase.png",
+      "sourceUrl": "https://supabase.com/favicon/apple-icon-180x180.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 180,
+      "height": 180
+    },
+    "firebase": {
+      "name": "Firebase",
+      "officialWebsite": "https://firebase.google.com/",
+      "localPath": "/tool-logos/web-development/firebase.png",
+      "sourceUrl": "https://www.gstatic.com/devrel-devsite/prod/vc11e4c9d4c060345ba98585d538d4546e842f4a6ee5c5f9e85be4bd345767217/firebase/images/favicon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 32,
+      "height": 32
+    },
+    "appwrite": {
+      "name": "Appwrite",
+      "officialWebsite": "https://appwrite.io/",
+      "localPath": "/tool-logos/web-development/appwrite.png",
+      "sourceUrl": "https://appwrite.io/logo.svg",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 24,
+      "height": 24
+    },
+    "pocketbase": {
+      "name": "PocketBase",
+      "officialWebsite": "https://pocketbase.io/",
+      "localPath": "/tool-logos/web-development/pocketbase.png",
+      "sourceUrl": "https://pocketbase.io/images/favicon/apple-touch-icon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 180,
+      "height": 180
+    },
+    "mongodb-atlas": {
+      "name": "MongoDB Atlas",
+      "officialWebsite": "https://www.mongodb.com/atlas",
+      "localPath": "/tool-logos/web-development/mongodb-atlas.png",
+      "sourceUrl": "https://images.contentstack.io/v3/assets/blt7151619cb9560896/bltfe3bee7877352896/Meta_Generic.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 2400,
+      "height": 1260
+    },
+    "neon": {
+      "name": "Neon",
+      "officialWebsite": "https://neon.com/",
+      "localPath": "/tool-logos/web-development/neon.png",
+      "sourceUrl": "https://neon.com/favicon/favicon.svg",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 180,
+      "height": 180
+    },
+    "convex": {
+      "name": "Convex",
+      "officialWebsite": "https://www.convex.dev/",
+      "localPath": "/tool-logos/web-development/convex.png",
+      "sourceUrl": "https://www.convex.dev/og-home.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 1200,
+      "height": 630
+    },
+    "penpot": {
+      "name": "Penpot",
+      "officialWebsite": "https://penpot.app/",
+      "localPath": "/tool-logos/web-development/penpot.png",
+      "sourceUrl": "https://site-assets.plasmic.app/bd5cdab7f749bba987c8de1f2cbdff60.webp",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 2092,
+      "height": 1230
+    },
+    "framer": {
+      "name": "Framer",
+      "officialWebsite": "https://www.framer.com/",
+      "localPath": "/tool-logos/web-development/framer.png",
+      "sourceUrl": "https://framerusercontent.com/images/Io89FonxEaWg4nxvQQllVLwPUUI.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 64,
+      "height": 64
+    },
+    "shadcn-ui": {
+      "name": "shadcn/ui",
+      "officialWebsite": "https://ui.shadcn.com/",
+      "localPath": "/tool-logos/web-development/shadcn-ui.png",
+      "sourceUrl": "https://ui.shadcn.com/favicon-16x16.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 16,
+      "height": 16
+    },
+    "magic-ui": {
+      "name": "Magic UI",
+      "officialWebsite": "https://magicui.design/",
+      "localPath": "/tool-logos/web-development/magic-ui.png",
+      "sourceUrl": "https://magicui.design/favicon.ico?favicon.2i_1dllw8049l.ico",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 256,
+      "height": 256
+    },
+    "aceternity-ui": {
+      "name": "Aceternity UI",
+      "officialWebsite": "https://ui.aceternity.com/",
+      "localPath": "/tool-logos/web-development/aceternity-ui.png",
+      "sourceUrl": "https://ui.aceternity.com/apple-icon.png?2deb28af3ac52d4d",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 114,
+      "height": 114
+    },
+    "untitled-ui": {
+      "name": "Untitled UI",
+      "officialWebsite": "https://www.untitledui.com/",
+      "localPath": "/tool-logos/web-development/untitled-ui.png",
+      "sourceUrl": "https://cdn.prod.website-files.com/636496d3f0ebfdaba9784655/6708848510bc3d367ad6d289_favicon-32px.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 32,
+      "height": 32
+    },
+    "google-search-console": {
+      "name": "Google Search Console",
+      "officialWebsite": "https://search.google.com/search-console/",
+      "localPath": "/tool-logos/web-development/google-search-console.png",
+      "sourceUrl": "https://www.gstatic.com/search-console/scfe/favicon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 32,
+      "height": 32
+    },
+    "pagespeed-insights": {
+      "name": "PageSpeed Insights",
+      "officialWebsite": "https://pagespeed.web.dev/",
+      "localPath": "/tool-logos/web-development/pagespeed-insights.png",
+      "sourceUrl": "https://www.gstatic.com/pagespeed/insights/ui/logo/favicon_48.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 48,
+      "height": 48
+    },
+    "lighthouse": {
+      "name": "Lighthouse",
+      "officialWebsite": "https://developer.chrome.com/docs/lighthouse",
+      "localPath": "/tool-logos/web-development/lighthouse.png",
+      "sourceUrl": "https://www.gstatic.com/devrel-devsite/prod/vc11e4c9d4c060345ba98585d538d4546e842f4a6ee5c5f9e85be4bd345767217/chrome/images/favicon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 32,
+      "height": 32
+    },
+    "gtmetrix": {
+      "name": "GTmetrix",
+      "officialWebsite": "https://gtmetrix.com/",
+      "localPath": "/tool-logos/web-development/gtmetrix.png",
+      "sourceUrl": "https://gtmetrix.com/favicon.svg",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 54,
+      "height": 54
+    },
+    "screaming-frog": {
+      "name": "Screaming Frog",
+      "officialWebsite": "https://www.screamingfrog.co.uk/seo-spider/",
+      "localPath": "/tool-logos/web-development/screaming-frog.png",
+      "sourceUrl": "https://www.screamingfrog.co.uk/wp-content/themes/screamingfrog/public/images/apple-touch-icon-144x144.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 144,
+      "height": 144
+    },
+    "uptimerobot": {
+      "name": "UptimeRobot",
+      "officialWebsite": "https://uptimerobot.com/",
+      "localPath": "/tool-logos/web-development/uptimerobot.png",
+      "sourceUrl": "https://uptimerobot.com/favicon-32x32.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 32,
+      "height": 32
+    },
+    "browserstack": {
+      "name": "BrowserStack",
+      "officialWebsite": "https://www.browserstack.com/",
+      "localPath": "/tool-logos/web-development/browserstack.png",
+      "sourceUrl": "https://bstackprod.kinsta.cloud/wp-content/themes/browserstack/img/brand-v2/apple-touch-icon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 180,
+      "height": 180
+    },
+    "freecodecamp": {
+      "name": "freeCodeCamp",
+      "officialWebsite": "https://www.freecodecamp.org/",
+      "localPath": "/tool-logos/web-development/freecodecamp.png",
+      "sourceUrl": "https://www.freecodecamp.org/favicon-32x32.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 32,
+      "height": 32
+    },
+    "mdn-web-docs": {
+      "name": "MDN Web Docs",
+      "officialWebsite": "https://developer.mozilla.org/",
+      "localPath": "/tool-logos/web-development/mdn-web-docs.png",
+      "sourceUrl": "https://developer.mozilla.org/favicon.ico",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 48,
+      "height": 48
+    },
+    "the-odin-project": {
+      "name": "The Odin Project",
+      "officialWebsite": "https://www.theodinproject.com/",
+      "localPath": "/tool-logos/web-development/the-odin-project.png",
+      "sourceUrl": "https://www.theodinproject.com/apple-touch-icon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 180,
+      "height": 180
+    },
+    "roadmap-sh": {
+      "name": "roadmap.sh",
+      "officialWebsite": "https://roadmap.sh/",
+      "localPath": "/tool-logos/web-development/roadmap-sh.png",
+      "sourceUrl": "https://roadmap.sh/manifest/apple-touch-icon.png",
+      "provenance": "favicon",
+      "verificationStatus": "unverified",
+      "width": 180,
+      "height": 180
+    }
+  },
+  "failures": [
+    {
+      "name": "GitHub Pages",
+      "slug": "github-pages",
+      "officialWebsite": "https://pages.github.com/",
+      "reason": "no valid official logo image found"
+    },
+    {
+      "name": "Render",
+      "slug": "render",
+      "officialWebsite": "https://render.com/",
+      "reason": "no valid official logo image found"
+    },
+    {
+      "name": "Replit",
+      "slug": "replit",
+      "officialWebsite": "https://replit.com/",
+      "reason": "robots.txt blocks crawling"
+    },
+    {
+      "name": "GitHub Copilot",
+      "slug": "github-copilot",
+      "officialWebsite": "https://github.com/features/copilot",
+      "reason": "robots.txt blocks crawling"
+    },
+    {
+      "name": "Aider",
+      "slug": "aider",
+      "officialWebsite": "https://aider.chat/",
+      "reason": "no valid official logo image found"
+    },
+    {
+      "name": "GitHub",
+      "slug": "github",
+      "officialWebsite": "https://github.com/",
+      "reason": "robots.txt blocks crawling"
+    },
+    {
+      "name": "Bitbucket",
+      "slug": "bitbucket",
+      "officialWebsite": "https://bitbucket.org/",
+      "reason": "robots.txt blocks crawling"
+    },
+    {
+      "name": "CodeSandbox",
+      "slug": "codesandbox",
+      "officialWebsite": "https://codesandbox.io/",
+      "reason": "no valid official logo image found"
+    },
+    {
+      "name": "CodePen",
+      "slug": "codepen",
+      "officialWebsite": "https://codepen.io/",
+      "reason": "robots.txt blocks crawling"
+    },
+    {
+      "name": "Postman",
+      "slug": "postman",
+      "officialWebsite": "https://www.postman.com/",
+      "reason": "robots.txt blocks crawling"
+    },
+    {
+      "name": "Figma",
+      "slug": "figma",
+      "officialWebsite": "https://www.figma.com/",
+      "reason": "robots.txt blocks crawling"
+    },
+    {
+      "name": "LottieFiles",
+      "slug": "lottiefiles",
+      "officialWebsite": "https://lottiefiles.com/",
+      "reason": "no valid official logo image found"
+    },
+    {
+      "name": "W3Schools",
+      "slug": "w3schools",
+      "officialWebsite": "https://www.w3schools.com/",
+      "reason": "robots.txt blocks crawling"
+    }
+  ]
+}

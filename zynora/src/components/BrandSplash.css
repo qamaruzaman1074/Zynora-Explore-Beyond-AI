@@ -5,10 +5,8 @@
   display: grid;
   overflow: hidden;
   place-items: center;
-  background:
-    radial-gradient(circle at 50% 48%, rgb(239 65 54 / 10%), transparent 24%),
-    #09090c;
-  color: #fff;
+  background: #fff;
+  color: #171923;
   opacity: 1;
   transition:
     opacity 300ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -21,16 +19,48 @@
   pointer-events: none;
 }
 
+.brand-splash__skip {
+  position: absolute;
+  z-index: 1;
+  top: clamp(18px, 4vw, 32px);
+  right: clamp(18px, 4vw, 32px);
+  padding: 9px 16px;
+  border: 1px solid rgb(23 25 35 / 14%);
+  border-radius: 999px;
+  background: #fff;
+  color: #171923;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.brand-splash__skip:hover,
+.brand-splash__skip:focus-visible {
+  border-color: #ef4136;
+  background: #fff5f3;
+  color: #c92c24;
+}
+
+.brand-splash__skip:focus-visible {
+  outline: 3px solid rgb(239 65 54 / 28%);
+  outline-offset: 3px;
+}
+
 .brand-splash__glow {
   position: absolute;
   width: min(78vw, 760px);
   aspect-ratio: 1;
-  border: 1px solid rgb(255 255 255 / 5%);
+  border: 1px solid rgb(23 25 35 / 7%);
   border-radius: 50%;
   box-shadow:
-    0 0 0 54px rgb(255 255 255 / 1.5%),
-    0 0 120px rgb(239 65 54 / 8%);
-  animation: splash-orbit 2s ease-in-out both;
+    0 0 0 54px rgb(23 25 35 / 2%),
+    0 0 120px rgb(239 65 54 / 7%);
+  animation: splash-orbit 2.7s ease-in-out both;
 }
 
 .brand-splash__glow::before,
@@ -44,7 +74,7 @@
 
 .brand-splash__glow::after {
   inset: 34%;
-  border-color: rgb(239 65 54 / 12%);
+  border-color: rgb(239 65 54 / 15%);
 }
 
 .brand-splash__content {
@@ -84,7 +114,7 @@
 .brand-splash__tagline {
   display: flex;
   gap: 7px;
-  color: rgb(255 255 255 / 68%);
+  color: rgb(23 25 35 / 68%);
   font-family: var(--font-mono);
   font-size: clamp(0.78rem, 2.2vw, 1rem);
   font-weight: 600;
@@ -103,7 +133,7 @@
   height: 2px;
   overflow: hidden;
   border-radius: 999px;
-  background: rgb(255 255 255 / 10%);
+  background: rgb(23 25 35 / 10%);
 }
 
 .brand-splash__progress span {
@@ -113,7 +143,7 @@
   border-radius: inherit;
   background: linear-gradient(90deg, #ef4136, #ff8067);
   transform-origin: left;
-  animation: splash-progress 2s linear both;
+  animation: splash-progress 2.7s linear both;
 }
 
 @keyframes splash-letter {
@@ -162,6 +192,13 @@
 
   .brand-splash__tagline {
     letter-spacing: 0.12em;
+  }
+}
+
+@media (max-width: 767px) {
+  .brand-splash__skip {
+    min-width: 48px;
+    min-height: 48px;
   }
 }
 

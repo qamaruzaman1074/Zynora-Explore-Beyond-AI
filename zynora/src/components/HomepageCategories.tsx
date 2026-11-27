@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import { ArrowUpRight } from 'lucide-react'
-import { featuredCategoryGroups } from '../data/categories'
+import { categoryGroups, featuredCategoryGroups } from '../data/categories'
 import AppLink from './AppLink'
 import {
   CategoryGroupCard,
@@ -10,6 +10,10 @@ import './HomepageCategories.css'
 
 function HomepageCategories() {
   const homepageCategoryGroups = featuredCategoryGroups.slice(0, 4)
+  const categoryCount = categoryGroups.reduce(
+    (total, group) => total + group.children.length,
+    0,
+  )
 
   return (
     <section
@@ -46,7 +50,7 @@ function HomepageCategories() {
           <CategoryGroupCard group={group} index={index} key={group.slug} />
         ))}
         <AppLink
-          aria-label="Browse 81 AI tool categories"
+          aria-label={`Browse ${categoryCount} AI tool categories`}
           className="category-browse-card"
           data-reveal
           href="/categories"
@@ -58,7 +62,7 @@ function HomepageCategories() {
         >
           <span className="category-browse-card__eyebrow">Explore the directory</span>
           <span className="category-browse-card__title">
-            Browse 81 categories
+            Browse {categoryCount} categories
           </span>
           <span className="category-browse-card__button">
             View all categories

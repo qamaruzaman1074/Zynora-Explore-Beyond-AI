@@ -269,6 +269,28 @@
   font-size: 0.875rem;
 }
 
+.coffee-modal__payment-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-block: var(--space-3);
+}
+
+.coffee-modal__payment-logo {
+  display: block;
+  width: clamp(72px, 28vw, 112px);
+  height: auto;
+  aspect-ratio: 1;
+  margin: 0;
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgb(11 11 20 / 8%);
+  object-fit: contain;
+}
+
 .coffee-modal__number {
   display: flex;
   width: 100%;
@@ -287,12 +309,14 @@
 
 .coffee-modal__number > span:first-child {
   display: grid;
+  min-width: 0;
   gap: 3px;
 }
 
 .coffee-modal__number small {
   color: var(--text-muted);
   font-size: 0.6875rem;
+  overflow-wrap: anywhere;
 }
 
 .coffee-modal__number strong {
@@ -346,6 +370,33 @@
 
   .buy-coffee-card {
     min-height: 104px;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-footer__navigation,
+  .site-footer__middle {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-footer__group a {
+    min-height: 48px;
+  }
+
+  .coffee-modal__close {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 420px) {
+  .coffee-modal__number {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .coffee-modal__number > span:last-child {
+    justify-content: center;
   }
 }
 

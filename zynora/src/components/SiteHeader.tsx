@@ -1,15 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronDown } from 'lucide-react'
+import githubLogo from '../assets/social/github.png'
 import { featuredCategoryGroups } from '../data/categories'
 import AnimatedLogo from '../AnimatedLogo'
 import AppLink from './AppLink'
 import './SiteHeader.css'
 
 const mainNavigation = [
-  { label: 'Home', href: '/#home' },
   { label: 'Explore', href: '/#explore' },
   { label: 'All Tools', href: '/all-tools' },
-  { label: 'Trending', href: '/#trending' },
 ]
 
 type LinkNavigationProps = {
@@ -28,7 +27,7 @@ function MainNavigation({
   return (
     <nav aria-label="Primary navigation" className={className}>
       <ul>
-        {mainNavigation.slice(0, 2).map(({ label, href }) => (
+        {mainNavigation.slice(0, 1).map(({ label, href }) => (
           <li key={href}>
             <AppLink href={href} onClick={onNavigate}>
               {label}
@@ -52,7 +51,7 @@ function MainNavigation({
             />
           </button>
         </li>
-        {mainNavigation.slice(2).map(({ label, href }) => (
+        {mainNavigation.slice(1).map(({ label, href }) => (
           <li key={href}>
             <AppLink href={href} onClick={onNavigate}>
               {label}
@@ -156,24 +155,23 @@ function MobileCategoryAccordion({
   )
 }
 
-type SearchLinkProps = {
+type GitHubLinkProps = {
   className: string
   onClick: () => void
 }
 
-function SearchLink({ className, onClick }: SearchLinkProps) {
+function GitHubLink({ className, onClick }: GitHubLinkProps) {
   return (
-    <AppLink
-      aria-label="Go to tool discovery"
+    <a
+      aria-label="Visit ZYNORA on GitHub (opens in a new tab)"
       className={className}
-      href="/#explore"
+      href="https://github.com/qamaruzaman1074"
       onClick={onClick}
+      rel="noopener noreferrer"
+      target="_blank"
     >
-      <svg aria-hidden="true" viewBox="0 0 24 24">
-        <circle cx="10.8" cy="10.8" r="6.3" />
-        <path d="m15.5 15.5 4.2 4.2" />
-      </svg>
-    </AppLink>
+      <img alt="" height={24} src={githubLogo} width={24} />
+    </a>
   )
 }
 
@@ -215,7 +213,7 @@ function SiteHeader() {
         <AppLink
           aria-label="ZYNORA — Explore Beyond AI"
           className="site-header__brand"
-          href="/#home"
+          href="/"
           onClick={closeMenus}
         >
           <AnimatedLogo />
@@ -230,8 +228,8 @@ function SiteHeader() {
         />
 
         <div className="site-header__desktop-actions">
-          <SearchLink
-            className="site-header__search"
+          <GitHubLink
+            className="site-header__github"
             onClick={closeMenus}
           />
           <AppLink
@@ -243,24 +241,32 @@ function SiteHeader() {
           </AppLink>
         </div>
 
-        <button
-          aria-controls="mobile-navigation"
-          aria-expanded={isMenuOpen}
-          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          className="site-header__menu-toggle"
-          onClick={() => setIsMenuOpen((open) => !open)}
-          type="button"
-        >
-          <svg aria-hidden="true" viewBox="0 0 24 24">
-            <path
-              d={
-                isMenuOpen
-                  ? 'm6 6 12 12M18 6 6 18'
-                  : 'M4 7h16M4 12h16M4 17h16'
-              }
-            />
-          </svg>
-        </button>
+        <div className="site-header__mobile-header-actions">
+          <GitHubLink
+            className="site-header__mobile-github"
+            onClick={closeMenus}
+          />
+          <button
+            aria-controls="mobile-navigation"
+            aria-expanded={isMenuOpen}
+            aria-label={
+              isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'
+            }
+            className="site-header__menu-toggle"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            type="button"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path
+                d={
+                  isMenuOpen
+                    ? 'm6 6 12 12M18 6 6 18'
+                    : 'M4 7h16M4 12h16M4 17h16'
+                }
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {isMegaOpen && (
@@ -315,7 +321,7 @@ function SiteHeader() {
           <div className="site-header__mobile-content site-container">
             <nav aria-label="Primary navigation" className="site-header__mobile-nav">
               <ul>
-                {mainNavigation.slice(0, 2).map(({ label, href }) => (
+                {mainNavigation.slice(0, 1).map(({ label, href }) => (
                   <li key={href}>
                     <AppLink href={href} onClick={closeMenus}>
                       {label}
@@ -325,7 +331,7 @@ function SiteHeader() {
                 <li>
                   <MobileCategoryAccordion onNavigate={closeMenus} />
                 </li>
-                {mainNavigation.slice(2).map(({ label, href }) => (
+                {mainNavigation.slice(1).map(({ label, href }) => (
                   <li key={href}>
                     <AppLink href={href} onClick={closeMenus}>
                       {label}
@@ -335,10 +341,6 @@ function SiteHeader() {
               </ul>
             </nav>
             <div className="site-header__mobile-actions">
-              <SearchLink
-                className="site-header__mobile-search"
-                onClick={closeMenus}
-              />
               <AppLink
                 className="button button--accent site-header__mobile-cta"
                 href="/submit-ai-tool"

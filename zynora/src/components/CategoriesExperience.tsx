@@ -279,6 +279,7 @@ type CategoryDetailPageProps = {
 }
 
 type PricingFilter = 'all' | 'Free' | 'Freemium' | 'Free Trial' | 'Paid'
+type OpenSourceFilter = 'all' | 'yes' | 'no'
 type ToolSort = 'popular' | 'newest' | 'alphabetical'
 
 function CategoryDetailPage({
@@ -287,6 +288,7 @@ function CategoryDetailPage({
 }: CategoryDetailPageProps) {
   const [query, setQuery] = useState('')
   const [pricing, setPricing] = useState<PricingFilter>('all')
+  const [openSource, setOpenSource] = useState<OpenSourceFilter>('all')
   const [sort, setSort] = useState<ToolSort>('popular')
   const groupToolSlugs = useMemo(
     () =>
@@ -311,7 +313,12 @@ function CategoryDetailPage({
         (pricing === 'Paid'
           ? tool.pricing === 'Paid' || tool.pricing === 'Premium'
           : tool.pricing === pricing)
-      return matchesQuery && matchesPricing
+      const matchesOpenSource =
+        openSource === 'all' ||
+        (openSource === 'yes'
+          ? tool.openSource === true
+          : tool.openSource !== true)
+      return matchesQuery && matchesPricing && matchesOpenSource
     })
 
     return matching.sort((first, second) => {
@@ -332,7 +339,7 @@ function CategoryDetailPage({
       }
       return first.name.localeCompare(second.name)
     })
-  }, [groupToolSlugs, normalizedQuery, pricing, sort])
+  }, [groupToolSlugs, normalizedQuery, openSource, pricing, sort])
   const activeCategorySlug = category?.slug
 
   return (
@@ -436,6 +443,23 @@ function CategoryDetailPage({
             <option value="Freemium">Freemium</option>
             <option value="Free Trial">Free Trial</option>
             <option value="Paid">Paid</option>
+          </select>
+        </label>
+        <label>
+          <span>Open source</span>
+          <select
+            className="input"
+            onChange={(event) => {
+              const value = event.currentTarget.value
+              if (value === 'all' || value === 'yes' || value === 'no') {
+                setOpenSource(value)
+              }
+            }}
+            value={openSource}
+          >
+            <option value="all">All tools</option>
+            <option value="yes">Open source</option>
+            <option value="no">Not verified open source</option>
           </select>
         </label>
       </div>
